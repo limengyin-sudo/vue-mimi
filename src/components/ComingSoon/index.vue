@@ -1,13 +1,15 @@
 <template>
     <div class="movie_body">
         <ul>
-            <li>
-                <div class="pic_show"><img src="" alt=""></div>
+            <li v-for="item in comingList" :key="item.id">
+                <div class="pic_show"><img :src="item.img | setWH('128.180')" alt=""></div>
                 <div class="info_list">
-                    <h2>亲爱的，新年好</h2>
-                    <p>观众评分<span class="grade">9.2</span></p>
-                    <p>主演：白百何，魏大勋，张子枫</p>
-                    <p>今天65家影院放映648场</p>
+                    <h2>{{item.nm}}
+                        <!-- <img v-if="item.version" src="@/assets/maxs.png" alt="" /> -->
+                    </h2>
+                    <p>观众评分<span class="grade">{{item.sc}}</span></p>
+                    <p>主演：{{item.star}}</p>
+                    <p>上映时间：{{item.rt}}</p>
                 </div>
                 <div class="btn_mall">
                     预售
@@ -19,7 +21,21 @@
 
 <script>
 export default {
-    name:'comingSoon'
+    name:'comingSoon',
+    data(){
+        return {
+            comingList:[]
+        }
+    },
+    mounted(){
+        this.axios.get('/api/movieComingList?cityId=10').then(res=>{
+            var msg = res.data.msg;
+            if(msg === 'ok'){
+                console.log(res.data.data.comingList)
+                this.comingList = res.data.data.comingList;
+            }
+        })
+    }
 }
 </script>
 
@@ -40,7 +56,7 @@ export default {
                 .pic_show{
                     width: 64px;
                     height: 90px;
-                    background-color: #eb7070;
+                    // background-color: #eb7070;
                     img{
                         width: 100%
                     }

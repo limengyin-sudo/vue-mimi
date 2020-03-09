@@ -32,6 +32,9 @@ export default {
         height: 50px;
         position: fixed;
         bottom: 0;
+        z-index: 100;
+        background-color: #fff;
+        border-top: 2px solid #ddd;
         ul{
             display: flex;
             justify-content: space-around;
