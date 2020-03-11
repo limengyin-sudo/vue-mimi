@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>全城</h1>
         
     </div>
 </template>
