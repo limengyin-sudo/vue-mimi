@@ -1,7 +1,7 @@
 <template>
     <div>
         <header id="header">
-            <h1 class="title">{{title}}</h1>
+            <slot></slot><h1 class="title">{{title}}</h1>
         </header>
     </div>
 </template>
@@ -33,6 +33,5 @@ export default {
             font-weight: normal;
             margin: 0;
         }
-
     }
 </style>

@@ -15,8 +15,25 @@ export default{
         {
             path:'search',
             component : () => import('@/components/Search')
-        },
-        {
+        },{
+            path:"detail/1/:id",
+            components : {
+                default:()=>import('@/components/NowPlaying'),
+                detail:()=>import('@/views/Movie/detail.vue')
+            },
+            props:{
+                detail:true
+            }
+        },{
+            path:"detail/2/:id",
+            components : {
+                default:()=>import('@/components/ComingSoon'),
+                detail:()=>import('@/views/Movie/detail.vue')
+            },
+            props:{
+                detail:true
+            }
+        },{
             path:'/movie',
             redirect : '/movie/nowPlaying'
         }
